@@ -40,6 +40,8 @@ const Presentation = styled.article`
 `;
 
 const Menu = styled.nav`
+  text-align: right;
+
   ul {
     list-style: none;
     display: inline-block;
@@ -64,13 +66,14 @@ const Socials = styled.ul`
 `;
 
 const Items = styled.ul`
+  text-align: left;
   padding: 0;
   margin: 0;
 `;
 
 
 const App: React.FC = () =>
-  <StyledContainer gridTemplateColumns="10fr 2fr">
+  <StyledContainer gridTemplateColumns="10fr 3fr">
     <Router>
 
       <Presentation>
