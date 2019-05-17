@@ -93,8 +93,8 @@ const App: React.FC = () =>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/gmurayama_" target="_blank">
-              <span className="icon-twitter"></span>
+            <a href="mailto:gmurayama@outlook.com">
+              <span className="icon-email"></span>
             </a>
           </li>
         </Socials>
