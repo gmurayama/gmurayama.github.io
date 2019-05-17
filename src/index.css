@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700');
+
+html, body, p, a, span {
+    font-family: Montserrat, Helvetica, Arial
+}
+
+body {
+    margin: 0;
+    background-color: #FCFCFC;
+    color: #14213d;
+}
+
+a {
+    color: #14213d;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+a:hover {
+    transition: color 0.4s ease;
+    color: #3d5eac;
+}
