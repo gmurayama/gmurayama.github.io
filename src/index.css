@@ -11,12 +11,20 @@ body {
 }
 
 a {
-    color: #14213d;
+    color: #3d5eac;
     text-decoration: none;
     font-weight: 300;
 }
 
 a:hover {
     transition: color 0.4s ease;
+    color: #2274a5;
+}
+
+ul li a {
+    color: #14213d;
+}
+
+ul li a:hover {
     color: #3d5eac;
 }
