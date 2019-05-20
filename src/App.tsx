@@ -7,6 +7,7 @@ import { TransitionApplier } from './components/TransitionApplier';
 import './assets/icons.css';
 import { CSSTransition } from 'react-transition-group';
 import { Fade } from './components/Fade';
+import { Menu, Socials, NavItems, NavLink } from './components/Sidemenu';
 
 interface IState {
   openContent: boolean;
@@ -46,7 +47,7 @@ const Profession = styled.h2`
 
   &.change-font-size-enter-done {
     font-size: 20px;
-    transition: font-size 200ms ease-in-out;
+    transition: font-size 180ms ease-in-out;
   }
 
   &.change-font-size-exit {
@@ -55,7 +56,7 @@ const Profession = styled.h2`
 
   &.change-font-size-exit-done {
     font-size: 26px;
-    transition: font-size 200ms ease-in-out;
+    transition: font-size 180ms ease-in-out;
   }
 
   &::after {
@@ -75,56 +76,6 @@ const Presentation = styled.article`
   padding-bottom: 15px;
 `;
 
-const Menu = styled.nav`
-  text-align: right;
-
-  ul {
-    list-style: none;
-    display: inline-block;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  ul li {
-    padding: 12px;
-  }
-`;
-
-const Socials = styled.ul`
-  border-right: 1px solid #d1d5de;
-  padding: 0 10px 0 0;
-  margin: 0 6px 0 0;
-
-  li span {
-    font-size: 20px;
-    vertical-align: text-bottom;
-  }
-`;
-
-const Items = styled.ul`
-  text-align: left;
-  padding: 0;
-  margin: 0;
-`;
-
-const Fade = styled.div`
-  opacity: 0;
-
-  &.fade-enter-done {
-    opacity: 1;
-    transition: opacity 200ms ease-in;
-  }
-
-  &.fade-exit {
-    opacity: 1;
-  }
-
-  &.fade-exit-done {
-    opacity: 0;
-    transition: opacity 100ms ease-out;
-  }
-`;
-
 class App extends React.Component<{}, IState> {
   constructor(props: any) {
     super(props);
@@ -134,7 +85,6 @@ class App extends React.Component<{}, IState> {
   render = () =>
     <StyledContainer gridTemplateColumns="10fr 3fr">
       <Router>
-
         <Presentation>
           <TransitionApplier
             in={this.state.openContent}
@@ -174,11 +124,11 @@ class App extends React.Component<{}, IState> {
               </a>
             </li>
           </Socials>
-          <Items>
-            <li><Link to="/about" onClick={() => this.setState({ openContent: !this.state.openContent })}>About me</Link></li>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </Items>
+          <NavItems>
+            <li><NavLink isActived={this.state.openContent} to="/about" onClick={() => this.setState({ openContent: !this.state.openContent })}>About me</NavLink></li>
+            <li><NavLink to="/projects" >Projects</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
+          </NavItems>
         </Menu>
       </Router>
     </StyledContainer>;
