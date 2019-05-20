@@ -11,4 +11,5 @@ export const Container = styled.div<IProps>`
     max-width: 80em;
     margin: 0 auto;
     width: 100%;
+    padding: 15px;
 `;
