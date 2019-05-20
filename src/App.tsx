@@ -6,6 +6,7 @@ import { Container } from './components/Container';
 import { TransitionApplier } from './components/TransitionApplier';
 import './assets/icons.css';
 import { CSSTransition } from 'react-transition-group';
+import { Fade } from './components/Fade';
 
 interface IState {
   openContent: boolean;
