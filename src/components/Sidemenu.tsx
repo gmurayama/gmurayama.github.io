@@ -49,8 +49,8 @@ export const NavLink = styled(Link) <ILinkProps>`
       left: 0;
       right: -1px;
       content: '';
-      border-bottom: solid 3px #2274a5;
-      ${props => props.isActived ? 'transform: scaleX(1);' : 'transform: scaleX(0);'}
+      border-bottom: solid 2px #2274a5;
+      transform: scaleX(0);
       transition: transform 200ms ease-in-out;
       transform-origin: 0% 50%;
     }

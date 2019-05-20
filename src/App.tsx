@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { About } from './About/About';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { About } from './About';
 import { Container } from './components/Container';
 import { TransitionApplier } from './components/TransitionApplier';
 import './assets/icons.css';
@@ -46,12 +46,12 @@ const Profession = styled.h2`
   transition: font-size 200ms ease-in-out;
 
   &.change-font-size-enter-done {
-    font-size: 20px;
+    font-size: 18px;
     transition: font-size 180ms ease-in-out;
   }
 
   &.change-font-size-exit {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   &.change-font-size-exit-done {
