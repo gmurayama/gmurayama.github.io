@@ -8,8 +8,9 @@ interface IProps extends CSSTransitionProps {
 
 export const TransitionApplier = ({ children, ...props }: IProps) =>
   <>
-    {children.map((child) =>
+    {children.map((child, index) =>
       <CSSTransition
+        key={index}
         {...props}
       >
         {child}

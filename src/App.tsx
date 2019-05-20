@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { About } from './About';
 import { Container } from './components/Container';
 import { TransitionApplier } from './components/TransitionApplier';
 import './assets/icons.css';
 import { CSSTransition } from 'react-transition-group';
 import { Fade } from './components/Fade';
+import { Contact } from './Contact';
 import { Menu, Socials, NavItems, NavLink } from './components/Sidemenu';
 
 interface IState {
-  openContent: boolean;
+  showContent: boolean;
+  resizePresentation: boolean;
+  lastEventTargetClicked?: EventTarget;
 }
 
 const StyledContainer = styled(Container)`
@@ -79,7 +82,22 @@ const Presentation = styled.article`
 class App extends React.Component<{}, IState> {
   constructor(props: any) {
     super(props);
-    this.state = { openContent: false };
+
+    this.state = {
+      showContent: false,
+      resizePresentation: false,
+      lastEventTargetClicked: undefined
+    };
+  }
+
+  changeContent = (e: React.SyntheticEvent<EventTarget>) => {
+    const eventTarget = e.target;
+    const closeContent = this.state.showContent && this.state.lastEventTargetClicked === eventTarget;
+
+    this.setState((prevState) =>
+      ({ showContent: !prevState.showContent, resizePresentation: prevState.resizePresentation, lastEventTargetClicked: eventTarget }),
+      () => { this.setState({ showContent: !closeContent, resizePresentation: !closeContent }); }
+    );
   }
 
   render = () =>
@@ -87,7 +105,7 @@ class App extends React.Component<{}, IState> {
       <Router>
         <Presentation>
           <TransitionApplier
-            in={this.state.openContent}
+            in={this.state.resizePresentation}
             timeout={0}
             classNames="change-font-size"
           >
@@ -96,12 +114,15 @@ class App extends React.Component<{}, IState> {
           </TransitionApplier>
 
           <CSSTransition
-            in={this.state.openContent}
+            in={this.state.showContent}
             timeout={ { enter: 100, exit: 0 }}
             classNames="fade"
           >
             <Fade>
-              <Route path="/about" component={About} />
+              <Switch>
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
+              </Switch>
             </Fade>
           </CSSTransition>
         </Presentation>
@@ -125,9 +146,9 @@ class App extends React.Component<{}, IState> {
             </li>
           </Socials>
           <NavItems>
-            <li><NavLink isActived={this.state.openContent} to="/about" onClick={() => this.setState({ openContent: !this.state.openContent })}>About me</NavLink></li>
+            <li><NavLink to="/about" onClick={this.changeContent}>About me</NavLink></li>
             <li><NavLink to="/projects" >Projects</NavLink></li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
+            <li><NavLink to="/contact" onClick={this.changeContent}>Contact</NavLink></li>
           </NavItems>
         </Menu>
       </Router>
