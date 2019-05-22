@@ -95,7 +95,7 @@ class App extends React.Component<{}, IState> {
     const closeContent = this.state.showContent && this.state.lastEventTargetClicked === eventTarget;
 
     this.setState((prevState) =>
-      ({ showContent: !prevState.showContent, resizePresentation: prevState.resizePresentation, lastEventTargetClicked: eventTarget }),
+      ({ showContent: !prevState.showContent, lastEventTargetClicked: eventTarget }),
       () => { this.setState({ showContent: !closeContent, resizePresentation: !closeContent }); }
     );
   }
