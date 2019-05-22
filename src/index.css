@@ -10,6 +10,10 @@ body {
     color: #14213d;
 }
 
+h2 {
+    font-weight: 400;
+}
+
 a {
     color: #3d5eac;
     text-decoration: none;
