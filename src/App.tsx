@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { About } from './About';
-import { Container } from './components/Container';
-import { TransitionApplier } from './components/TransitionApplier';
+import { Container } from './components/Container/Container';
+import { TransitionApplier } from './components/Transitions/TransitionApplier';
 import './assets/icons.css';
 import { CSSTransition } from 'react-transition-group';
-import { Fade } from './components/Fade';
+import { Fade } from './components/Transitions/Fade';
 import { Contact } from './Contact';
-import { Menu, Socials, NavItems, NavLink } from './components/Sidemenu';
+import { Nav, IconMenu, TextMenu, NavLink } from './components/Menu';
 
 interface IState {
   showContent: boolean;
@@ -127,8 +127,8 @@ class App extends React.Component<{}, IState> {
           </CSSTransition>
         </Presentation>
 
-        <Menu>
-          <Socials>
+        <Nav>
+          <IconMenu>
             <li>
               <a href="https://www.linkedin.com/in/gmurayama" target="_blank">
                 <span className="icon-linkedin"></span>
@@ -144,13 +144,13 @@ class App extends React.Component<{}, IState> {
                 <span className="icon-email"></span>
               </a>
             </li>
-          </Socials>
-          <NavItems>
+          </IconMenu>
+          <TextMenu>
             <li><NavLink to="/about" onClick={this.changeContent}>About me</NavLink></li>
             <li><NavLink to="/projects" >Projects</NavLink></li>
             <li><NavLink to="/contact" onClick={this.changeContent}>Contact</NavLink></li>
-          </NavItems>
-        </Menu>
+          </TextMenu>
+        </Nav>
       </Router>
     </StyledContainer>;
 }
