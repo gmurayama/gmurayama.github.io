@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from "react-router-dom";
 import { About } from './About';
 import { Container } from './components/Container/Container';
 import { TransitionApplier } from './components/Transitions/TransitionApplier';
@@ -8,6 +8,7 @@ import './assets/icons.css';
 import { CSSTransition } from 'react-transition-group';
 import { Fade } from './components/Transitions/Fade';
 import { Contact } from './Contact';
+import { Projects } from './Projects';
 import { Nav, IconMenu, TextMenu, NavLink } from './components/Menu';
 
 interface IState {
@@ -26,12 +27,12 @@ const Name = styled.h1`
   font-size: 44px;
 
   &.change-font-size-enter-done {
-    font-size: 24px;
+    font-size: 28px;
     transition: font-size 200ms ease-in-out;
   }
 
   &.change-font-size-exit {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   &.change-font-size-exit-done {
@@ -49,12 +50,12 @@ const Profession = styled.h2`
   transition: font-size 200ms ease-in-out;
 
   &.change-font-size-enter-done {
-    font-size: 18px;
+    font-size: 20px;
     transition: font-size 180ms ease-in-out;
   }
 
   &.change-font-size-exit {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   &.change-font-size-exit-done {
@@ -115,13 +116,14 @@ class App extends React.Component<{}, IState> {
 
           <CSSTransition
             in={this.state.showContent}
-            timeout={ { enter: 100, exit: 0 }}
+            timeout={{ enter: 100, exit: 0 }}
             classNames="fade"
           >
             <Fade>
               <Switch>
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
+                <Route path="/projects" component={Projects} />
               </Switch>
             </Fade>
           </CSSTransition>
@@ -147,7 +149,7 @@ class App extends React.Component<{}, IState> {
           </IconMenu>
           <TextMenu>
             <li><NavLink to="/about" onClick={this.changeContent}>About me</NavLink></li>
-            <li><NavLink to="/projects" >Projects</NavLink></li>
+            <li><NavLink to="/projects" onClick={this.changeContent}>Projects</NavLink></li>
             <li><NavLink to="/contact" onClick={this.changeContent}>Contact</NavLink></li>
           </TextMenu>
         </Nav>
