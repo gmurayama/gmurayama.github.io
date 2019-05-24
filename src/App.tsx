@@ -102,7 +102,10 @@ class App extends React.Component<{}, IState> {
   }
 
   render = () =>
-    <StyledContainer gridTemplateColumns="10fr 3fr">
+    <StyledContainer
+      smallColumns={1}
+      mediumColumns="10fr 3fr"
+    >
       <Router>
         <Presentation>
           <TransitionApplier
