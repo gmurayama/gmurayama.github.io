@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { About } from './About';
 import { Container } from './components/Container/Container';
 import { TransitionApplier } from './components/Transitions/TransitionApplier';
 import './assets/icons.css';
-import { CSSTransition } from 'react-transition-group';
-import { Fade } from './components/Transitions/Fade';
+import { FadeTransition } from './components/Transitions/Fade';
 import { Contact } from './Contact';
 import { Projects } from './Projects';
 import { Nav, IconMenu, TextMenu, NavLink } from './components/Menu';
@@ -117,19 +116,17 @@ class App extends React.Component<{}, IState> {
             <Profession>Software Developer</Profession>
           </TransitionApplier>
 
-          <CSSTransition
+          <FadeTransition
             in={this.state.showContent}
             timeout={{ enter: 100, exit: 0 }}
             classNames="fade"
           >
-            <Fade>
-              <Switch>
-                <Route path="/about" component={About} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/projects" component={Projects} />
-              </Switch>
-            </Fade>
-          </CSSTransition>
+            <Switch>
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/projects" component={Projects} />
+            </Switch>
+          </FadeTransition>
         </Presentation>
 
         <Nav>
