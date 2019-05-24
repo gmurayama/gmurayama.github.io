@@ -16,21 +16,21 @@ export const Container = styled.div<IProps>`
   padding: 15px;
 
   ${props => props.smallColumns &&
-      media.phone(
-        gridTemplateColumns(props.smallColumns)
-      )
+    media.phone(
+      gridTemplateColumns(props.smallColumns)
+    )
   }
 
   ${props => props.mediumColumns &&
-      media.tablet(
-        gridTemplateColumns(props.mediumColumns)
-      )
+    media.tablet(
+      gridTemplateColumns(props.mediumColumns)
+    )
   }
 
   ${props => props.largeColumns &&
-      media.desktop(
-        gridTemplateColumns(props.largeColumns)
-      )
+    media.desktop(
+      gridTemplateColumns(props.largeColumns)
+    )
   }
 `;
 
@@ -39,6 +39,6 @@ const gridTemplateColumns = (args: string | number): string => {
     case 'string':
       return `grid-template-columns: ${args}`;
     case 'number':
-      return `grid-template-columns: repeat(${args}, 1fr)`;
+      return `grid-template-columns: repeat(${args}, 1fr);`;
   }
 }
