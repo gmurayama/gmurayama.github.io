@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { media } from './../../themes/mediaQuery';
 
 interface IProps extends React.HTMLAttributes<any> {
-  smallColumns?: string | number;
-  mediumColumns?: string | number;
-  largeColumns?: string | number;
+  small?: string | number;
+  medium?: string | number;
+  large?: string | number;
 }
 
 export const Container = styled.div<IProps>`
@@ -14,22 +14,23 @@ export const Container = styled.div<IProps>`
   margin: 0 auto;
   width: 100%;
   padding: 15px;
+  box-sizing: border-box;
 
-  ${props => props.smallColumns &&
-    media.phone(
-      gridTemplateColumns(props.smallColumns)
+  ${props => props.small &&
+    media.small(
+      gridTemplateColumns(props.small)
     )
   }
 
-  ${props => props.mediumColumns &&
-    media.tablet(
-      gridTemplateColumns(props.mediumColumns)
+  ${props => props.medium &&
+    media.medium(
+      gridTemplateColumns(props.medium)
     )
   }
 
-  ${props => props.largeColumns &&
-    media.desktop(
-      gridTemplateColumns(props.largeColumns)
+  ${props => props.large &&
+    media.large(
+      gridTemplateColumns(props.large)
     )
   }
 `;

@@ -9,6 +9,7 @@ import { FadeTransition } from './components/Transitions/Fade';
 import { Contact } from './Contact';
 import { Projects } from './Projects';
 import { Nav, IconMenu, TextMenu, NavLink } from './components/Menu';
+import { media } from './themes/mediaQuery';
 
 interface IState {
   showContent: boolean;
@@ -17,25 +18,31 @@ interface IState {
 }
 
 const StyledContainer = styled(Container)`
-  margin-top: 12.5%;
+  ${media.small(`
+    margin-top: 25%;
+  `)}
+
+  ${media.medium(`
+    margin-top: 12.5%;
+  `)}
 `;
 
 const Name = styled.h1`
   font-weight: 300;
   margin: 0 0 6px;
-  font-size: 44px;
+  font-size: 2.75rem;
 
   &.change-font-size-enter-done {
-    font-size: 28px;
+    font-size: 1.75rem;
     transition: font-size 200ms ease-in-out;
   }
 
   &.change-font-size-exit {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   &.change-font-size-exit-done {
-    font-size: 44px;
+    font-size: 2.75rem;
     transition: font-size 200ms ease-in-out;
   }
 `;
@@ -66,6 +73,7 @@ const Profession = styled.h2`
     content: '';
     border-bottom: 1px solid #d1d5de;
     width: 520px;
+    max-width: 100%;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -102,8 +110,8 @@ class App extends React.Component<{}, IState> {
 
   render = () =>
     <StyledContainer
-      smallColumns={1}
-      mediumColumns="10fr 3fr"
+      small={1}
+      medium="10fr 3fr"
     >
       <Router>
         <Presentation>
