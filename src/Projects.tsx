@@ -58,7 +58,7 @@ export class Projects extends React.Component<{}, IState> {
       <Title>Projects</Title>
       {this.state.repositories.length === 0 && <LoadingIcon />}
 
-      <StyledContainer medium="repeat(3, 2fr)">
+      <StyledContainer medium="repeat(2, 1fr)" large="repeat(3, 1fr)">
         {this.state.repositories.map((repository) =>
           <Card key={repository.id}>
             <CardHeader>

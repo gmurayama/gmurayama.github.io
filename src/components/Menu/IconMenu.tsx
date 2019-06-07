@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../themes/mediaQuery";
 
 
 export const IconMenu = styled.ul`
@@ -10,4 +11,8 @@ export const IconMenu = styled.ul`
     font-size: 20px;
     vertical-align: text-bottom;
   }
+
+  ${media.phone(`
+    border-right: none;
+  `)}
 `;
