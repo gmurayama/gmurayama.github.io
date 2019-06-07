@@ -119,55 +119,53 @@ class App extends React.Component<RouteComponentProps<string>, IState> {
       small={1}
       medium="10fr 3fr"
     >
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Presentation>
-          <TransitionApplier
-            in={this.state.resizePresentation}
-            timeout={0}
-            classNames="change-font-size"
-          >
-            <Name>Gustavo Murayama</Name>
-            <Profession>Software Developer</Profession>
-          </TransitionApplier>
+      <Presentation>
+        <TransitionApplier
+          in={this.state.resizePresentation}
+          timeout={0}
+          classNames="change-font-size"
+        >
+          <Name>Gustavo Murayama</Name>
+          <Profession>Software Developer</Profession>
+        </TransitionApplier>
 
-          <FadeTransition
-            in={this.state.showContent}
-            timeout={{ enter: 100, exit: 0 }}
-            classNames="fade"
-          >
-            <Switch>
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/projects" component={Projects} />
-            </Switch>
-          </FadeTransition>
-        </Presentation>
+        <FadeTransition
+          in={this.state.showContent}
+          timeout={{ enter: 100, exit: 0 }}
+          classNames="fade"
+        >
+          <Switch>
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/projects" component={Projects} />
+          </Switch>
+        </FadeTransition>
+      </Presentation>
 
-        <Nav>
-          <IconMenu>
-            <li>
-              <a href="https://www.linkedin.com/in/gmurayama" target="_blank">
-                <span className="icon-linkedin"></span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/gmurayama" target="_blank">
-                <span className="icon-github"></span>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:gmurayama@outlook.com">
-                <span className="icon-email"></span>
-              </a>
-            </li>
-          </IconMenu>
-          <TextMenu>
-            <li><NavLink to="/about" onClick={this.changeContent}>About me</NavLink></li>
-            <li><NavLink to="/projects" onClick={this.changeContent}>Projects</NavLink></li>
-            <li><NavLink to="/contact" onClick={this.changeContent}>Contact</NavLink></li>
-          </TextMenu>
-        </Nav>
-      </BrowserRouter>
+      <Nav>
+        <IconMenu>
+          <li>
+            <a href="https://www.linkedin.com/in/gmurayama" target="_blank">
+              <span className="icon-linkedin"></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/gmurayama" target="_blank">
+              <span className="icon-github"></span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:gmurayama@outlook.com">
+              <span className="icon-email"></span>
+            </a>
+          </li>
+        </IconMenu>
+        <TextMenu>
+          <li><NavLink to="/about" onClick={this.changeContent}>About me</NavLink></li>
+          <li><NavLink to="/projects" onClick={this.changeContent}>Projects</NavLink></li>
+          <li><NavLink to="/contact" onClick={this.changeContent}>Contact</NavLink></li>
+        </TextMenu>
+      </Nav>
     </StyledContainer>;
 }
 
