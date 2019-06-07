@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, BrowserRouter } from "react-router-dom";
 import { About } from './About';
 import { Container } from './components/Container/Container';
 import { TransitionApplier } from './components/Transitions/TransitionApplier';
@@ -10,6 +10,7 @@ import { Contact } from './Contact';
 import { Projects } from './Projects';
 import { Nav, IconMenu, TextMenu, NavLink } from './components/Menu';
 import { media } from './themes/mediaQuery';
+import { RouterProps, RouteComponentProps } from 'react-router';
 
 interface IState {
   showContent: boolean;
@@ -87,8 +88,8 @@ const Presentation = styled.article`
   padding-bottom: 15px;
 `;
 
-class App extends React.Component<{}, IState> {
-  constructor(props: any) {
+class App extends React.Component<RouteComponentProps<string>, IState> {
+  constructor(props: RouteComponentProps<string>) {
     super(props);
 
     this.state = {
@@ -96,6 +97,11 @@ class App extends React.Component<{}, IState> {
       resizePresentation: false,
       lastEventTargetClicked: undefined
     };
+  }
+
+  componentDidMount = () => {
+    const closedContent = this.props.location.pathname === '/';
+    this.setState({ showContent: !closedContent, resizePresentation: !closedContent });
   }
 
   changeContent = (e: React.SyntheticEvent<EventTarget>) => {
@@ -113,7 +119,7 @@ class App extends React.Component<{}, IState> {
       small={1}
       medium="10fr 3fr"
     >
-      <Router>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Presentation>
           <TransitionApplier
             in={this.state.resizePresentation}
@@ -161,7 +167,7 @@ class App extends React.Component<{}, IState> {
             <li><NavLink to="/contact" onClick={this.changeContent}>Contact</NavLink></li>
           </TextMenu>
         </Nav>
-      </Router>
+      </BrowserRouter>
     </StyledContainer>;
 }
 
