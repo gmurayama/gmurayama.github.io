@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { About } from './About';
 import { Container } from './components/Container/Container';
 import { TransitionApplier } from './components/Transitions/TransitionApplier';
@@ -10,7 +10,7 @@ import { Contact } from './Contact';
 import { Projects } from './Projects';
 import { Nav, IconMenu, TextMenu, NavLink } from './components/Menu';
 import { media } from './themes/mediaQuery';
-import { RouterProps, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 interface IState {
   showContent: boolean;
