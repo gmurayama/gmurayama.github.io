@@ -1,5 +1,5 @@
 +++
 title = "Hello, world!"
-date = 2025-11-30
+date = "2025-11-30"
 +++
 

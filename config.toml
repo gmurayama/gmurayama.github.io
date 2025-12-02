@@ -1,5 +1,6 @@
 base_url = "https://gmurayama.dev"
 default_language = "en"
+author = "gmurayama"
 
 compile_sass = true
 minify_html = true
@@ -9,6 +10,24 @@ build_search_index = false
 theme = "linkita"
 
 [markdown]
-highlight_code = false
+highlight_code = true
 
-[extra]
+[extra.languages.en]
+date_format = "%b %d, %Y"
+
+[extra.profiles.gmurayama]
+
+avatar_url = ""
+avatar_alt = ""
+avatar_invert = false
+
+name = "Gustavo Murayama"
+
+bio = "Hey!"
+
+social = [
+    { name = "github", url = "https://github.com/gmurayama" },
+    { name = "bluesky", url = "https://bsky.app/profile/gmurayama.bsky.social" },
+    { name = "email", url = "mailto:gmurayama@outlook.com" },
+    { name = "rss", url = "$BASE_URL/atom.xml" },
+]
